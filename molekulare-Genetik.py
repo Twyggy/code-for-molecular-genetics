@@ -68,6 +68,25 @@ for i in range(len(splited)):
         
 print(output)
 
-# outputstr = ' '.join(output) | wenn man stopp und start sehen möchte
-outputstr = ' '.join(item for item in output if item not in ('start', 'stopp'))
-print('Amino acid sequence:', outputstr)
+# gibt den index von start und stopp
+start_indices = [i for i, x in enumerate(output) if x == 'start']
+stop_indices = [i for i, x in enumerate(output) if x == 'stopp']
+
+print(start_indices, stop_indices)
+
+result = []
+
+# filtert, was zwischen start und stopp steht
+for start, stop in zip(start_indices, stop_indices):
+    if start < stop:
+        result.append(output[start+1:stop])
+
+# print(result)
+
+result_strings = [' '.join(sublist) for sublist in result]
+result_combined = ''' | '''.join(result_strings)
+
+print(result_combined)
+# # outputstr = ' '.join(output) | wenn man stopp und start sehen möchte
+# outputstr = ' '.join(item for item in output if item not in ('start', 'stopp'))
+# print('Amino acid sequence:', outputstr)
