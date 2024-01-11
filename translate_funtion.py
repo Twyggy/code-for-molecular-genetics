@@ -65,7 +65,7 @@ def translate_mRNA(mRNA):
             result.append(output[start+1:stop])
 
     result_strings = [' - '.join(sublist) for sublist in result]
-    result_combined = '''
+    result_combined = ''' 
 '''.join(result_strings)
     
     return result_combined

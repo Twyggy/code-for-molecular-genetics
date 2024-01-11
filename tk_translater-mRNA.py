@@ -22,6 +22,8 @@ def translate_input():
     if translated_input == '':
         translated_input = 'No AS sequence found'
     result_text.set(f"Translated input: {translated_input}")
+    
+    print(translated_input)
 
 app = tk.Tk()
 app.title('mRNA Translator')
