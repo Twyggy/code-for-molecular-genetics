@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import filedialog
 from translate_funtion import translate_mRNA
 
+# opens the Documents on PC to upload txt file
+#Use of regex to split the sequences by line 
+
 def open_file():
     file_path = filedialog.askopenfilename(filetypes=[('Text files', '*.txt')])
     if file_path:
@@ -9,13 +12,13 @@ def open_file():
             file_content = file.readlines()
             cleaned_list = [item.replace("\n", "") for item in file_content]
             result_texts = []  
+            for i, item in enumerate(cleaned_list): #item is element from 'cleaned_list'
+                stringy = translate_mRNA(item) # translating mRNA using translate_mRNA function
+                result_texts.append(f"{i+1}. {stringy}") #pushing the stringy into result_texts
+                
+            result_text.set('\n'.join(result_texts)) #converting result_text from array into string with '\n' for linesplit
 
-            for i, item in enumerate(cleaned_list):
-                stringy = translate_mRNA(item)
-                result_texts.append(f"{i+1}. {stringy}")
-
-            result_text.set('\n'.join(result_texts))
-
+#the same but without the file uploder and for loop.
 def translate_input():
     input_text = input_entry.get()
     translated_input = translate_mRNA(input_text)
@@ -25,6 +28,8 @@ def translate_input():
     
     print(translated_input)
 
+
+#interface
 app = tk.Tk()
 app.title('mRNA Translator')
 
