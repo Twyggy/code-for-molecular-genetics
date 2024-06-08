@@ -75,4 +75,3 @@ def translate_mRNA(mRNA):
 '''.join(result_strings)
     
     return result_combined #returns a string with translated AS sequence
-
