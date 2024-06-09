@@ -73,7 +73,7 @@ while True:
         # print(output)
         
         allAS = ' '.join(output)
-        print('All AS: ', allAS)
+        # print('Alle Aminosäuren: ', allAS)
         
         # gibt den index von start und stopp
         start_indices = [i for i, x in enumerate(output) if x == 'start']
